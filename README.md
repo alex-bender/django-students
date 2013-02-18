@@ -1,0 +1,4 @@
+django-students
+===============
+
+django-students
