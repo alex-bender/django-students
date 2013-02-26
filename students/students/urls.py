@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from main.views import show_students, show_groups
+from main.editor import *
 admin.autodiscover()
 
 
@@ -14,6 +15,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^group/list/', show_groups),
-    url(r'^student/list/', show_students),
+    url(r'^group/list/$', show_groups),
+    url(r'^student/list/$', show_students),
+    url(r'^groups/edit/(?P<group>\w+)', edit_groups ),
+    #url(r'^students/edit/', edit),
 )
