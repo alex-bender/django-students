@@ -1,8 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from main.views import show_students, show_groups
 admin.autodiscover()
 
-from main.views import group_list
 
 urlpatterns = patterns('',
     # Examples:
@@ -14,5 +14,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^group/list/', group_list),
+    url(r'^group/list/', show_groups),
+    url(r'^student/list/', show_students),
 )

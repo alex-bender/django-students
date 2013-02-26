@@ -38,4 +38,7 @@ http://webnewage.org/2008/02/05/komandovat-paradom-budet-django/)
 Django.TestFramework - написать django-testcase (unittest) который
 логинится на сайт, добавляет группу и студента в созданную группу
 
-
+# comment by axbndr
+# how remove migration??
+# find this
+# field group.num must be in database
