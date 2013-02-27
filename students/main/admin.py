@@ -2,8 +2,6 @@ from django.contrib import admin
 from main.models import Group, Student
 
 
-
-
 class GroupAdmin(admin.ModelAdmin):
     list_display = ('name', 'num', 'senior')
     

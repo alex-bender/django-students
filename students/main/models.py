@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 
 class Group(models.Model):
     name = models.CharField('Name', max_length=30)
@@ -17,3 +18,11 @@ class Student(models.Model):
 
     def __unicode__(self):
         return "%s %s" % (self.name, self.last_name)
+
+class StudentForm(ModelForm):
+    class Meta:
+        model = Student
+
+class GroupForm(ModelForm):
+    class Meta:
+        model = Group
