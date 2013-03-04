@@ -6,19 +6,18 @@ from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 
-from forms import Student, Group, StudentForm, GroupForm, UserCreateForm#, AddUserForm
+from forms import Student, Group, StudentForm, GroupForm, UserCreateForm, LoginForm#, AddUserForm
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 
 def index(request):
-    return HttpResponse('something')
+    return render(request, 'base.html')
 #------------------------------------------------------------------------------
 #            logout, login, and add to ech other function (if user.auth) ....
 #------------------------------------------------------------------------------
 def auth_user(request, username, password):
-#    user = authenticate(username=request.POST['username'],
-#                        password=request.POST['password'])
+
     user = authenticate(username=username, password=password)
     if user is not None:
         if user.is_active:
@@ -29,17 +28,37 @@ def auth_user(request, username, password):
     else:
         return HttpResponse('bad login')
 
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+def UserLogin(request, *args, **kwargs):
+    user_form = LoginForm(request.POST)
+
+    if user_form.is_valid():
+        
+        username = user_form.user#clean_username()
+        password = user_form.password#clean_password2()
+        
+        user = authenticate(username=username,
+                            password=password)
+#        redirect to lodin function
+        login(request, user)
+        return redirect(students)
+    return render(request,
+                  'login.html',
+                  { 'user_form' : user_form })
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 
 def CreateUserAndLogin(request, *args, **kwargs):
     user_form = UserCreateForm(request.POST)
     if user_form.is_valid():
         username = user_form.clean_username()
         password = user_form.clean_password2()
-        user_form.save()
-#        user = authenticate(username=username,
-#                            password=password)
+        #user_form.save()
+        user = authenticate(username=username,
+                            password=password)
 #        redirect to lodin function
-#        login(request, user)
+        login(request, user)
         return redirect(index)
     return render(request,
                   'atemlete.html',
@@ -50,39 +69,13 @@ def login(request):
     password = request.POST['password']
     user = auth.authenticate(username=username, password=password)
     if user is not None and user.is_active:
-        # Правильный пароль и пользователь "активен"
+        # good pass & user "active"
         auth.login(request, user)
-        # Перенаправление на "правильную" страницу
+        # redirect to the  "right" page
         return HttpResponseRedirect("/account/loggedin/")
     else:
-        # Отображение страницы с ошибкой
+        # responce page with error
         return HttpResponseRedirect("/account/invalid/")
-
-
-#def new_user(request):
-#    form = AddUserForm(request.POST or None) 
-#    if form.is_valid():
-#        cmodel = form.save()
-#        cmodel.save()
-#        return redirect(students)
-#    return render_to_response('registration.html',
-#                              {'form': form,},
-#                               context_instance=RequestContext(request))
-
-#
-#def render_user_form(request):
-#    if request.method == 'POST': # If the form has been submitted...
-#        form = ContactForm(request.POST) # A form bound to the POST data
-#        if form.is_valid(): # All validation rules pass
-#            # Process the data in form.cleaned_data
-#            # ...
-#            return HttpResponseRedirect('/thanks/') # Redirect after POST
-#    else:
-#        form = ContactForm() # An unbound form
-#
-#    return render(request, 'contact.html', {
-#        'form': form,
-#    })
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------

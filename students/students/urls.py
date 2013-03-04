@@ -2,14 +2,14 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from main.views import students, students_add,  students_edit,students_delete
 from main.views import groups, groups_add, groups_edit, groups_delete
-from main.views import  auth_user, post#, new_user,
+from main.views import  auth_user, index#, CreateUserAndLogin#
 
 admin.autodiscover()
 
 
 urlpatterns = patterns('',
     # Examples:
-    #url(r'^$', 'students.views.home', name='home'),
+    url(r'^$', 'main.views.index'),
     #url(r'^students/', include('students.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -17,7 +17,10 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+    
+    url(r'^index/$', 'main.views.index'),
 
+    url(r'^login', 'main.views.UserLogin'),
     url(r'^auth/(?P<username>\w+)/(?P<password>\w+)/', 'main.views.auth_user'),
     url(r'^new_user/$', 'main.views.CreateUserAndLogin'),
 
