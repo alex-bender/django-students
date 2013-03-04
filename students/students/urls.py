@@ -2,26 +2,22 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from main.views import students, students_add,  students_edit,students_delete
 from main.views import groups, groups_add, groups_edit, groups_delete
-from main.views import  auth_user, index#, CreateUserAndLogin#
+from main.views import index, logout_view
 
 admin.autodiscover()
 
 
 urlpatterns = patterns('',
-    # Examples:
-    url(r'^$', 'main.views.index'),
-    #url(r'^students/', include('students.foo.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
+    url(r'^$', 'main.views.index'),
+
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     
     url(r'^index/$', 'main.views.index'),
-
-    url(r'^login', 'main.views.UserLogin'),
-    url(r'^auth/(?P<username>\w+)/(?P<password>\w+)/', 'main.views.auth_user'),
+    url(r'^login/', 'main.views.lolologin'),
+    url(r'^logout/$', 'main.views.logout_view'),
     url(r'^new_user/$', 'main.views.CreateUserAndLogin'),
 
     url(r'^students/$', 'main.views.students'),
@@ -34,7 +30,7 @@ urlpatterns = patterns('',
     url(r'^groups_edit/(?P<group_id>\d+)/$','main.views.groups_edit'),
     url(r'^groups_delete/(?P<group_id>\d+)/$','main.views.groups_delete'),
 #------------------------------------------------------------------------------
-    url(r'^registration/$', 'main.views.new_user'),
+    #url(r'^registration/$', 'main.views.new_user'),
     
 
 )

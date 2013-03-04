@@ -1,46 +1,53 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect, get_object_or_404, render
 from django.views.generic.simple import direct_to_template
 from django.template import RequestContext
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
-from forms import Student, Group, StudentForm, GroupForm, UserCreateForm, LoginForm#, AddUserForm
+from forms import StudentForm, GroupForm, UserCreateForm, LoginForm#, AddUserForm
+from models import Student, Group
+
+from django.contrib.auth.decorators import login_required
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 
 def index(request):
     return render(request, 'base.html')
+
+def lolologin(request):
+    login_form = AuthenticationForm(data=request.POST)
+    if (login_form.is_valid()):
+        user = authenticate(
+                username=login_form.cleaned_data['username'], 
+                password=login_form.cleaned_data['password'])
+        login(request, user)
+        return HttpResponse('good work!')
+    return render(request,
+                  'login.html',
+                  { 'user_form' : login_form })
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/index/')
+
+
 #------------------------------------------------------------------------------
 #            logout, login, and add to ech other function (if user.auth) ....
-#------------------------------------------------------------------------------
-def auth_user(request, username, password):
-
-    user = authenticate(username=username, password=password)
-    if user is not None:
-        if user.is_active:
-            login(request, user)
-            return HttpResponse('user is logined')
-        else:
-            return HttpResponse('disabled acc')
-    else:
-        return HttpResponse('bad login')
-
-#------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 def UserLogin(request, *args, **kwargs):
     user_form = LoginForm(request.POST)
 
     if user_form.is_valid():
         
-        username = user_form.user#clean_username()
-        password = user_form.password#clean_password2()
-        
+        username = user_form.cleaned_data['username']
+        password = user_form.cleaned_data['password']
+
         user = authenticate(username=username,
                             password=password)
-#        redirect to lodin function
         login(request, user)
         return redirect(students)
     return render(request,
@@ -64,13 +71,13 @@ def CreateUserAndLogin(request, *args, **kwargs):
                   'atemlete.html',
                   { 'user_form' : user_form })
 
-def login(request):
+def login_(request):
     username = request.POST['username']
     password = request.POST['password']
-    user = auth.authenticate(username=username, password=password)
+    user = authenticate(username=username, password=password)
     if user is not None and user.is_active:
         # good pass & user "active"
-        auth.login(request, user)
+        login(request, user)
         # redirect to the  "right" page
         return HttpResponseRedirect("/account/loggedin/")
     else:
@@ -79,6 +86,7 @@ def login(request):
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
+@login_required
 def students(request):
     students_list = Student.objects.all().order_by('name')
     return render_to_response('students.html',

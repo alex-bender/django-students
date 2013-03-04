@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <title>{% block title %}Students mange{% endblock %}</title>
+</head>
+
+<body>
+        {% block sidebar %}
+        <ul>
+            <li><a href="/login/">log in</a></li>
+            
+            <li><a href="/">Home</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="/logout/">log out</a></li>
+                <br/>
+                <li><a gref="/students/">Students</li>
+            {% endif %}           
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
