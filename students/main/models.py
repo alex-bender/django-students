@@ -1,6 +1,12 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
+@receiver(post_save, sender='Student')
+def my_callback(sender, **kwargs):
+    print('Request complite. Student changed 0r added')
 
+    
 class Group(models.Model):
     name = models.CharField('Name', max_length=30)
     num = models.DecimalField('Amt.', max_digits=2, decimal_places=0)

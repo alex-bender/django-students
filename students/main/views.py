@@ -25,7 +25,7 @@ def olologin(request):
                 username=login_form.cleaned_data['username'], 
                 password=login_form.cleaned_data['password'])
         login(request, user)
-        return redirect(request)#HttpResponse('login success')
+        HttpResponse('login success')
     return render(request,
                   'login.html',
                   { 'user_form' : login_form })
@@ -50,7 +50,7 @@ def CreateUserAndLogin(request, *args, **kwargs):
                   { 'user_form' : user_form })
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
-@login_required#(redirect_field_name='next')
+@login_required
 def students(request):
     students_list = Student.objects.all().order_by('name')
     return render_to_response('students.html',
@@ -83,16 +83,16 @@ def students_edit(request, student_id):
 #------------------------------------------------------------------------------
 @login_required
 def students_delete(request, student_id):
-    stud = Student.objects.get(pk=student_id).delete()
+    student = Student.objects.get(pk=student_id).delete()
 
     return redirect(students)
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 @login_required
 def groups(request):
-    groups_list = Group.objects.all().order_by('name')
+    groups = Group.objects.all().order_by('name')
     return render_to_response('groups.html',
-                              {'groups_list': groups_list,})
+                              {'groups': groups,})
 #------------------------------------------------------------------------------
 @login_required
 def groups_add(request):
@@ -118,6 +118,14 @@ def groups_edit(request, group_id):
                               {'group_form': form,
                                'group_id': group_id},
                               context_instance=RequestContext(request))    
+#------------------------------------------------------------------------------
+@login_required
+def group_list(request, group_name):
+    students_list = Student.objects.filter(group__name=group_name)
+    
+    return render_to_response('students_in_group.html',
+                              {'students_list': students_list,
+                              'group_name': group_name},)
 #------------------------------------------------------------------------------
 @login_required
 def groups_delete(request, group_id):

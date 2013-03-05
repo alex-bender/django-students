@@ -1,5 +1,8 @@
-</div>
+{% extends "base.html" %}
+
+{% block students %}
 <h1>Students</h1>
+
 
 <a href="/students_add/">+ Add student</a>
 {% if students_list %}
@@ -26,3 +29,4 @@
 {% else %}
     <p>No students in database created.</p>
 {% endif %}
+{% endblock %}

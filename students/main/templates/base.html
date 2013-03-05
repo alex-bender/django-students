@@ -6,23 +6,25 @@
 </head>
 
 <body>
-        {% block sidebar %}
+
+    <div id="content">
+    <div>
         <ul>
-            
-            <li><a href="/login/">log in</a></li>
-            
-            <li><a href="/">Home</a></li>
             {% if user.is_authenticated %}
                 <li><a href="/logout/">log out</a></li>
                 <br/>
                 <li><a href="/students/">Students</a></li>
-            {% endif %}           
+                <li><a href="/groups/">Groups</a></li>
+            {% else %} 
+                <li><a href="/login/">log in</a></li>         
+            {% endif %}                   
         </ul>
-        {% endblock %}
-    </div>
 
-    <div id="content">
+    </div>
+        {% block students_in_group %}{% endblock %}
         {% block content %}{% endblock %}
+        {% block groups %}{% endblock %}
+        {% block students %}{% endblock %}
     </div>
 </body>
 </html>

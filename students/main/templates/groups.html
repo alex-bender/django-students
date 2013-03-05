@@ -1,17 +1,19 @@
-</div>
-<h1>Groups</h1>
+{% extends "base.html" %}
 
+{% block groups %}
+<h1>Groups</h1>
+<a href="/index/">Home</a>
 <a href="/groups_add/">+ Add Group</a>
-{% if groups_list %}
+{% if groups %}
     <table border=1>
         <tr>
           <th>Name</th>
           <th>&nbsp;</th>    
         </tr>
-        {% for group in groups_list %} 
+        {% for group in groups %} 
         <tr>
           <td>
-            <a href="/groups_edit/{{ group.pk }}/">
+            <a href="/group_list/{{ group.name }}/">
       {{ group.name|lower }}
       </a>
           </td>
@@ -26,3 +28,4 @@
 {% else %}
     <p>No groups in database created.</p>
 {% endif %}
+{% endblock %}

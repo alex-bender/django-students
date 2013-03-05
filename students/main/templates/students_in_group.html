@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block students_in_group %}
+<ul>
+<li><a href="/">Home</a></li>
+</ul>
+    {% if students_list %}
+        <H1>Students in group {{ group_name }}</H1>
+            Name | Last name | id num<br/>      
+        {% for student in students_list %}
+</hr>
+            {{ student.name }} -
+            {{ student.last_name }} -
+            {{ student.student_id_card }}
+            </br>
+            
+        {% endfor %}
+        
+    {% endif %}
+
+{% endblock %}
