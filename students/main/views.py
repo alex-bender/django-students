@@ -7,7 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
-from forms import StudentForm, GroupForm#, AddUserForm, UserCreateForm, LoginForm
+from forms import StudentForm, GroupForm
 from models import Student, Group
 
 from django.contrib.auth.decorators import login_required
@@ -25,7 +25,6 @@ def olologin(request):
                 username=login_form.cleaned_data['username'], 
                 password=login_form.cleaned_data['password'])
         login(request, user)
-        HttpResponse('login success')
     return render(request,
                   'login.html',
                   { 'user_form' : login_form })
@@ -56,12 +55,11 @@ def students(request):
     return render_to_response('students.html',
                               {'students_list': students_list,})
 #------------------------------------------------------------------------------
-@login_required
+@login_required(redirect_field_name='/students_add/')
 def students_add(request):
     form = StudentForm(request.POST or None)
     if form.is_valid():
-        cmodel = form.save()
-        cmodel.save()
+        form.save()
         return redirect(students)
 
     return render_to_response('students_add.html',
@@ -73,8 +71,7 @@ def students_edit(request, student_id):
     student = get_object_or_404(Student, pk=student_id)
     form = StudentForm(request.POST or None, instance=student)
     if form.is_valid():
-        concat = form.save()
-        concat.save()
+        form.save()
         return redirect(students)
     return render_to_response('students_edit.html',
                               {'student_form': form,
@@ -83,7 +80,7 @@ def students_edit(request, student_id):
 #------------------------------------------------------------------------------
 @login_required
 def students_delete(request, student_id):
-    student = Student.objects.get(pk=student_id).delete()
+    Student.objects.get(pk=student_id).delete()
 
     return redirect(students)
 #------------------------------------------------------------------------------
@@ -91,15 +88,16 @@ def students_delete(request, student_id):
 @login_required
 def groups(request):
     groups = Group.objects.all().order_by('name')
+    #num = Select student where group = group 
     return render_to_response('groups.html',
-                              {'groups': groups,})
+                              {'groups': groups,
+                               })
 #------------------------------------------------------------------------------
 @login_required
 def groups_add(request):
     form = GroupForm(request.POST or None)
     if form.is_valid():
-        cmodel = form.save()
-        cmodel.save()
+        form.save()
         return redirect(groups)
     
     return render_to_response('groups_add.html',
@@ -111,8 +109,7 @@ def groups_edit(request, group_id):
     group = get_object_or_404(Group, pk=group_id)
     form = GroupForm(request.POST or None, instance=group)
     if form.is_valid():
-        concat = form.save()
-        concat.save()
+        form.save()
         return redirect(groups)
     return render_to_response('groups_edit.html',
                               {'group_form': form,
@@ -129,7 +126,7 @@ def group_list(request, group_name):
 #------------------------------------------------------------------------------
 @login_required
 def groups_delete(request, group_id):
-    group = Group.objects.get(pk=group_id).delete()
+    Group.objects.get(pk=group_id).delete()
     
     return redirect(groups)
 #------------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css" />
-    <title>{% block title %}Students mange{% endblock %}</title>
+    <title>Students manage</title>
 </head>
 
 <body>
@@ -11,10 +11,10 @@
     <div>
         <ul>
             {% if user.is_authenticated %}
-                <li><a href="/logout/">log out</a></li>
-                <br/>
                 <li><a href="/students/">Students</a></li>
                 <li><a href="/groups/">Groups</a></li>
+                <br/>
+                <li><a href="/logout/">log out</a></li>
             {% else %} 
                 <li><a href="/login/">log in</a></li>         
             {% endif %}                   
@@ -22,7 +22,11 @@
 
     </div>
         {% block students_in_group %}{% endblock %}
-        {% block content %}{% endblock %}
+
+        {% if not user.is_authentificate %}
+            {% block login %}{% endblock %}
+        {% endif %}
+
         {% block groups %}{% endblock %}
         {% block students %}{% endblock %}
     </div>

@@ -2,25 +2,34 @@
 
 {% block groups %}
 <h1>Groups</h1>
-<a href="/index/">Home</a>
+<a href="/index/">Home</a><br>
 <a href="/groups_add/">+ Add Group</a>
 {% if groups %}
     <table border=1>
         <tr>
           <th>Name</th>
-          <th>&nbsp;</th>    
+          <th>Senior</th>  
+          <th>Num</th>  
+          <th>&nbsp;</th>
         </tr>
         {% for group in groups %} 
         <tr>
           <td>
             <a href="/group_list/{{ group.name }}/">
-      {{ group.name|lower }}
-      </a>
+                {{ group.name|lower }}
+            </a>
           </td>
           <td>
+              <a href="/students/">{{ senior.name }}</a>
+          </td>
+          <td>
+              dddd
+          </td>            
+          <td>
             <a href="/groups_edit/{{ group.pk }}/">edit</a>
-      <a href="/groups_delete/{{ group.pk }}/">delete</a>
-          </td>      
+            <a href="/groups_delete/{{ group.pk }}/">delete</a>
+          </td> 
+   
         </tr>
         {% endfor %}    
     </table>
@@ -29,3 +38,5 @@
     <p>No groups in database created.</p>
 {% endif %}
 {% endblock %}
+
+'senior': senior

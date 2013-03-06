@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
-{% block content %}
-
+{% block login %}
   {% if user_form.errors %}
     <p class="error">Try again</p>
   {% endif %}
@@ -14,5 +13,4 @@
 
 <input type="submit" value="Login" />
 </form>
-
 {% endblock %}
