@@ -3,7 +3,8 @@ from django.contrib import admin
 from main.views import students, students_add,  students_edit,students_delete
 from main.views import groups, groups_add, groups_edit, groups_delete
 from main.views import index, logout_view
-from django.contrib.auth import login
+
+from django.contrib.auth.views import login
 
 
 admin.autodiscover()
@@ -17,8 +18,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     
     url(r'^index/$', 'main.views.index'),
-#    url(r'^login/', 'login'),
-    url(r'^login/', 'main.views.olologin'),
+    url(r'^login/', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
     url(r'^logout/$', 'main.views.logout_view'),
     url(r'^new_user/$', 'main.views.CreateUserAndLogin'),
 

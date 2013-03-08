@@ -4,13 +4,14 @@
   {% if user_form.errors %}
     <p class="error">Try again</p>
   {% endif %}
-  
-<form method="post" action="/login/">
 
-<p>{{ user_form.username }}</p>
-<p>{{ user_form.password }}</p>
+<form method="post" action="/login/">
+{% csrf_token %}
+<p>{{ form.username }}</p>
+<p>{{ form.password }}</p>
 
 
 <input type="submit" value="Login" />
+<input type="hidden" name="next" value="{{ next }}">
 </form>
 {% endblock %}

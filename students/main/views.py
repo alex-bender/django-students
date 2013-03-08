@@ -1,11 +1,9 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect, get_object_or_404, render
-from django.views.generic.simple import direct_to_template
 from django.template import RequestContext
 
 from django.contrib.auth import authenticate, login, logout
-
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
 
 from forms import StudentForm, GroupForm
 from models import Student, Group
@@ -17,18 +15,7 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request, 'base.html')
-
-def olologin(request):
-    login_form = AuthenticationForm(data=request.POST)
-    if (login_form.is_valid()):
-        user = authenticate(
-                username=login_form.cleaned_data['username'], 
-                password=login_form.cleaned_data['password'])
-        login(request, user)
-    return render(request,
-                  'login.html',
-                  { 'user_form' : login_form })
-
+#------------------------------------------------------------------------------
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/index/')
