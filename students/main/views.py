@@ -87,11 +87,14 @@ def students_delete(request, student_id):
 #------------------------------------------------------------------------------
 @login_required
 def groups(request):
-    groups = Group.objects.all().order_by('name')
-    #num = Select student where group = group 
+    groups = Group.objects.all().order_by('pk')
+    counter = []
+    for group in groups:
+        counter.append(Student.objects.filter(group__name=group.name).count())
+    counter.reverse()
     return render_to_response('groups.html',
                               {'groups': groups,
-                               })
+                               'counter': counter})
 #------------------------------------------------------------------------------
 @login_required
 def groups_add(request):

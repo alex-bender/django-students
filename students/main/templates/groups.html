@@ -15,15 +15,16 @@
         {% for group in groups %} 
         <tr>
           <td>
+                
             <a href="/group_list/{{ group.name }}/">
                 {{ group.name|lower }}
             </a>
           </td>
           <td>
-              <a href="/students/">{{ senior.name }}</a>
+              <a href="/students_edit/{{ group.senior.pk}}">{{ group.senior|title }}</a>
           </td>
           <td>
-              dddd
+              {{ counter.pop }}
           </td>            
           <td>
             <a href="/groups_edit/{{ group.pk }}/">edit</a>
