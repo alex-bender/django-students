@@ -1,3 +1,4 @@
+{% load custom_tags %}
 <!DOCTYPE html>
 
 <html lang="en">
@@ -7,18 +8,23 @@
 </head>
 
 <body>
-    <div id="content">
-        {% do_current_time %}
+    <div id="content">        
+        <br>
+        {% ln "Its a last news" %} <br>-- 
+        Wellcome, {{ request.user|title }}  ! --
+        {#{% edit_list request.user %}#}
+        {% test_request %}
+        {% url admin:main_Student 1 %}
     <div>
         <ul>
-            {% if user.is_authenticated %}
-                <li><a href="/students/">Students</a></li>
-                <li><a href="/groups/">Groups</a></li>
-                <br/>
-                <li><a href="/logout/">log out</a></li>
-            {% else %} 
-                <li><a href="/login/">log in</a></li>         
-            {% endif %}                   
+   
+        <li><a href="/students/">Students</a></li>
+        <li><a href="/groups/">Groups</a></li>
+        <br/>
+        <li><a href="/logout/">log out</a></li>
+     
+        <li><a href="/login/">log in</a></li>         
+
         </ul>
     </div>
         {% block students_in_group %}{% endblock %}
