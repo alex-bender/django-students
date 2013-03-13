@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from main.views import students, students_add,  students_edit,students_delete
 from main.views import groups, groups_add, groups_edit, groups_delete
-from main.views import index, logout_view
+from main.views import index, logout_view, edit_object
 
 from django.contrib.auth.views import login
 
@@ -12,6 +12,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
+    #url(r'^e/$(?P<group_name>\w+)/(?P<group_id>\d+)', 'main.views.edit_object'),
     url(r'^$', 'main.views.index'),
 
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

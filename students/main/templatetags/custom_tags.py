@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django import template
 import datetime
 
@@ -16,27 +17,10 @@ def lastnews(parser, token):
 
     return LastNewsNode(format_string[1:-1])
 #------------------------------------------------------------------------------
-def do_test_request(parser, token):
-    try:
-        tag_name = token.split_contents() # Not really useful
-    except ValueError:
-        raise template.TemplateSyntaxError("%r error" % token.contents.split()[0])
-    print 1
-    return RequestTestNode()
-#------------------------------------------------------------------------------
-class RequestTestNode(template.Node):
-    def __init__(self):
-        self.request = template.Variable('request')
-        print template.Variable('settings')
-
-        
-    def render(self, context):
-        
-        print context['settings'].SITE_ID
-        
-        #rqst = self.request.resolve(context)
-        return "%s" % ''
+def edit_list(object):
+    url = reverse('admin:%s_%s_change' % (object._meta.app_label, object._meta.module_name), args=[object.id])
+    return u'<a href="%s">Edit %s</a>' % (url,  object.__unicode__())
 #------------------------------------------------------------------------------
 
-register.tag('test_request', do_test_request)
+register.simple_tag(edit_list)
 register.tag('ln', lastnews)

@@ -11,10 +11,10 @@
     <div id="content">        
         <br>
         {% ln "Its a last news" %} <br>-- 
-        Wellcome, {{ request.user|title }}  ! --
-        {#{% edit_list request.user %}#}
-        {% test_request %}
-        {% url admin:main_Student 1 %}
+        Wellcome, {{ request.user|title }}  ! --<br>
+        
+        {% edit_list  request.user %}
+        
     <div>
         <ul>
    

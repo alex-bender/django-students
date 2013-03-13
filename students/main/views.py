@@ -1,3 +1,5 @@
+from django.core.urlresolvers import reverse
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect, get_object_or_404, render
 from django.template import RequestContext
@@ -120,8 +122,6 @@ def groups_delete(request, group_id):
     
     return redirect(groups)
 #------------------------------------------------------------------------------
-from django.core.urlresolvers import reverse
-
-def url_to_edit_object(object):
-    url = reverse('admin:%s_%s_change' %(object._meta.app_label,  object._meta.module_name),  args=[object.id] )
-    return u'<a href="%s">Edit %s</a>' %(url,  object.__unicode__())
+def edit_object(request, obj):
+    url = reverse('admin:%s_%s_change' % (object._meta.app_label, object._meta.module_name), args=[object.id])
+    return u'<a href="%s">Edit %s</a>' % (url,  self.object.__unicode__())
