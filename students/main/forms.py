@@ -8,4 +8,3 @@ class StudentForm(ModelForm):
 class GroupForm(ModelForm):
     class Meta:
         model = Group
-

@@ -13,7 +13,9 @@
         {% ln "Its a last news" %} <br>-- 
         Wellcome, {{ request.user|title }}  ! --<br>
         
-        {% edit_list  request.user %}
+        {% if user.is_authenticated %}            
+            {% edit_list  request.user %}
+        {% endif %}
         
     <div>
         <ul>

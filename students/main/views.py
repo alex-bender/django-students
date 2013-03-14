@@ -18,6 +18,9 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request, 'base.html')
 #------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/index/')
@@ -122,6 +125,3 @@ def groups_delete(request, group_id):
     
     return redirect(groups)
 #------------------------------------------------------------------------------
-def edit_object(request, obj):
-    url = reverse('admin:%s_%s_change' % (object._meta.app_label, object._meta.module_name), args=[object.id])
-    return u'<a href="%s">Edit %s</a>' % (url,  self.object.__unicode__())

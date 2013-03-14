@@ -35,6 +35,8 @@ SITE_ID = 1
 
 SITE_NAME = 'Students Manage'
 
+AUTHENTICATION_BACKENDS = ('main.username_email_login.EmailOrUsernameModelBackend',)
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.request",
@@ -109,8 +111,8 @@ MIDDLEWARE_CLASSES = (
     #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'main.MungeMiddle.MungeForMillMiddleware',
 )
 
 ROOT_URLCONF = 'students.urls'
