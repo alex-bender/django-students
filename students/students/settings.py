@@ -112,7 +112,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'main.MungeMiddle.MungeForMillMiddleware',
+    'main.TimeRenderMiddle.TimeRenderMiddleware',
 )
 
 ROOT_URLCONF = 'students.urls'
