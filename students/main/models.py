@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 import datetime
+from django.utils.timezone import utc
 
 
 #------------------------------------------------------------------------------
@@ -23,7 +24,7 @@ class Student(models.Model):
         return "%s %s" % (self.name, self.last_name)
 #------------------------------------------------------------------------------
 class LogModel(models.Model):
-    when = models.DateTimeField(default=datetime.datetime.now)
+    when = models.DateTimeField(default=datetime.datetime.utcnow().replace(tzinfo=utc))
     which = models.TextField(max_length=10)
     what = models.TextField(max_length=10)
     

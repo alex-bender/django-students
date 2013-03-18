@@ -13,9 +13,6 @@ class TimeRenderMiddleware(object):
         request.session['num_queries_old'] = len(connection.queries)
 
 #------------------------------------------------------------------------------
-    def proccess_view(self, request, view_func, view_args, view_kwargs):        
-        pass
-#------------------------------------------------------------------------------
     def process_response(self, request, response):
         
         queries = connection.queries

@@ -24,7 +24,7 @@
               <a href="/students_edit/{{ group.senior.pk}}">{{ group.senior|title }}</a>
           </td>
           <td>
-              {{ counter.pop }}
+              {{ group.student_set.count }}
           </td>            
           <td>
             <a href="/groups_edit/{{ group.pk }}/">edit</a>
