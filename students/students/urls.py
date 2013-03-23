@@ -4,8 +4,6 @@ from main.views import students, students_add,  students_edit,students_delete
 from main.views import groups, groups_add, groups_edit, groups_delete
 from main.views import index, logout_view
 
-from django.contrib.auth.views import login
-
 
 admin.autodiscover()
 

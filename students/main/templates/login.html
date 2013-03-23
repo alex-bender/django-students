@@ -1,24 +1,21 @@
-<form action="/login/" method="post">
-  {% csrf_token %}
-  <input type="hidden" name="next" value="{{ next }}" />
-  {{ form.non_field_errors }}
-  {% for field in form %}
-    <div class="field-wrapper">
-      <div class="label-wrapper">
-        {% if field.name == "username" %}
-          Email address or Username
-        {% else %}
-          {{ field.label_tag }}
-        {% endif %}
-        {% if field.field.required %}<span class="required">*</span>{% endif %}
-      </div>
-      <div class="value-wrapper">
-        {{ field }}
-        {{ field.errors }}
-      </div>
-    </div>
-  {% endfor %}
-  <div class="submit-wrapper">
-    <input type="submit" value="Sign In" />
-  </div>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
+
+<div id="stylized" class="myform">
+<form id="form" name="form" method="post" action="/login/" >    
+{% csrf_token %}
+
+<label>Username or Email</label>
+{{ form.username }}
+
+<label>Password</label>
+{{ form.password }}
+
+<button type="submit" value="Login">Login</button>
+<div class="spacer"> </div>
+
+<input type="hidden" name="next" value="{{ next }}" />
 </form>
+{% if form.errors %}
+    {{ form.errors.as_li }}
+{% endif %}
+</div>

@@ -2,10 +2,10 @@
 
 {% block groups %}
 <h1>Groups</h1>
-<a href="/index/">Home</a><br>
-<a href="/groups_add/">+ Add Group</a>
+
+<a href="/groups_add/">[Add Group]</a>
 {% if groups %}
-    <table border=1>
+    <table border=0>
         <tr>
           <th>Name</th>
           <th>Senior</th>  
@@ -38,6 +38,4 @@
 {% else %}
     <p>No groups in database created.</p>
 {% endif %}
-{% endblock %}
-
-'senior': senior
+{% endblock groups %}

@@ -27,6 +27,7 @@ def logout_view(request):
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 def CreateUserAndLogin(request, *args, **kwargs):
+    
     user_form = UserCreationForm(request.POST)
     if user_form.is_valid():
         username = user_form.clean_username()
@@ -37,15 +38,16 @@ def CreateUserAndLogin(request, *args, **kwargs):
         login(request, user)
         return redirect(index)
     return render(request,
-                  'atemlete.html',
-                  { 'user_form' : user_form })
+                  'registration.html',
+                  { 'form': user_form })
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 @login_required
 def students(request):
     students_list = Student.objects.all().order_by('name')
     return render_to_response('students.html',
-                              {'students_list': students_list,})
+                              {'students_list': students_list,},
+                              context_instance=RequestContext(request))
 #------------------------------------------------------------------------------
 @login_required(redirect_field_name='/students_add/')
 def students_add(request):
@@ -80,7 +82,9 @@ def students_delete(request, student_id):
 @login_required
 def groups(request):
     groups = Group.objects.all().order_by('pk')
-    return render_to_response('groups.html',{'groups': groups,})
+    return render_to_response('groups.html',
+                              {'groups': groups,},
+                              context_instance=RequestContext(request))
 #------------------------------------------------------------------------------
 @login_required
 def groups_add(request):

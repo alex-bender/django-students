@@ -1,42 +1,42 @@
 {% load custom_tags %}
-<!DOCTYPE html>
-
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="stylesheet" href="style.css" />
+<meta http-equiv="Content-Type" content="text/html"; />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
     <title>{{ settings.SITE_NAME }}</title>
 </head>
 
-<body>
-    <div id="content">        
-        <br>
-        {% ln "Its a last news" %} <br>-- 
-        Wellcome, {{ request.user|title }}  ! --<br>
-        
-        {% if user.is_authenticated %}            
-            {% edit_list  request.user %}
-        {% endif %}
-        
-    <div>
-        <ul>
-   
-        <li><a href="/students/">Students</a></li>
-        <li><a href="/groups/">Groups</a></li>
-        <br/>
-        <li><a href="/logout/">log out</a></li>
-     
-        <li><a href="/login/">log in</a></li>         
-
-        </ul>
-    </div>
-        {% block students_in_group %}{% endblock %}
-
-        {% if not user.is_authentificate %}
-            {% block login %}{% endblock %}
-        {% endif %}
-
-        {% block groups %}{% endblock %}
-        {% block students %}{% endblock %}
-    </div>
-</body>
+<body class="base">
+        <div id="container">
+            <div id="header">
+                <h1>Welcome, {{ request.user|title }}!</h1>
+                <!-- end #header --></div>
+            <div id="links">
+                  
+                    {% if not user.is_authentificate %}
+                        {% block login %}{% endblock %}
+                    {% endif %}              
+                    <div><a href="/login/">[Log in]</a>
+                    <a href="/logout/">[Log out]</a></div>
+                    <div><a href="/students/">[Students]</a>
+                    <a href="/groups/">[Groups]</a></div>
+                    
+                    {% if user.is_authenticated %}            
+                        [{% edit_list  request.user %}]
+                    {% endif %}
+                
+                <!-- end #links --></div>
+            <div id="main_content">
+                <div id="note">                
+                {% block groups %}{% endblock %}
+                {% block students %}{% endblock %}
+                {% block students_in_group %}{% endblock %}
+                </div>
+                <!-- end #main_content --></div>
+            <div id="footer">
+                <div id="copyright">Developed by company_name</div>
+                <!-- end #footer --></div>
+        </div>
+    </body>
 </html>
