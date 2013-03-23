@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.db import connection
 
 from time import time
@@ -25,6 +24,7 @@ class TimeRenderMiddleware(object):
 
         end_time = time()
         num_queries_new =  len(connection.queries)
+        
 
         content = response.content
         index = content.upper().find('</BODY>')
@@ -40,7 +40,7 @@ class TimeRenderMiddleware(object):
             diff_time = 0
             diff_queries = 0
         
-        message = """<div id="query_time"></br>\n<small><center>Time to render page is: %s</br>\n
+        message = """<div id="query_time"></br>\n<small><center>Time to render page is: %.4s</br>\n
         Time to sql Query: %s</br>
         Count of queries: %s</center></small></div>""" % (diff_time, query_time, diff_queries)
         content = before + message + after

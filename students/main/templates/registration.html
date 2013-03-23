@@ -1,26 +1,41 @@
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
 
 <div id="stylized" class="myform">
-<form id="form" name="form" method="post" action="/new_user/">
-{% csrf_token %}
-
-{% if form.errors %}
-    {{ form.errors.as_ul }}
-    <!-- <div class="error">{{ form.errors }} Please try again.</div> -->
-{% endif %}
-
-<h1>Create new user</h1>
-<p>Enter a username and two passwords</p>
-
-<label>Username</label>
-{{ form.username }}
-
-<label>Password</label>
-{{ form.password }}
-
-<button type="submit" value="Create&Login">Create&amp;Login</button>
-<div class="spacer"> </div>
-
-<input type="hidden" name="next" value="{{ next }}" />
+<form id="form" name="form" method="post" action="/new/user/">
+    {% csrf_token %}
+    
+    {% if form.errors %}
+        {{ form.errors.as_ul }}
+        <!-- <div class="error">{{ form.errors }} Please try again.</div> -->
+    {% endif %}
+    
+    <h1>Create new user</h1>
+    <p>Enter a username, email and two passwords</p>
+    
+    <label>Username
+        <span class="small">Enter your username</span>
+    </label>
+    {{ form.username }}
+    
+    <label>Email
+        <span class="small">Enter your e-mail</span>
+    </label>
+    {{ form.email }}
+    
+    <label>Password
+        <span class="small">Chose password</span>
+    </label>
+    {{ form.password1 }}
+    
+    <label>Password
+        <span class="small">Repeat password</span>
+    </label>
+    {{ form.password2 }}
+    
+    
+    <button type="submit" value="Create&Login">Create&amp; Login</button>
+    <div class="spacer"> </div>
+    
+    <input type="hidden" name="next" value="{{ next }}" />
 </form>
 </div>

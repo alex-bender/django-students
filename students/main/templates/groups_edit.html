@@ -1,11 +1,16 @@
-</div>
-<h1>Edit Groups</h1>
+{% extends "base.html" %}
+
+{% block groups %}
+
+<h2>Edit Groups</h2>
+<a href="{{ request.META.HTTP_REFERER }}">Back</a>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="/groups_edit/{{ group_id }}/" method="post">
-{% csrf_token %}
-<table>
-{{ group_form.as_table }}
-</table>
-<input type="submit" value="Save" />
+<form action="/edit/groups/{{ group_id }}/" method="post">
+    {% csrf_token %}
+    <table>
+        {{ group_form.as_table }}
+    </table>
+    <input type="submit" value="Save" />
 </form>
+{% endblock groups %}

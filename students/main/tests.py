@@ -27,7 +27,7 @@ class LoginCreateAddTest(unittest.TestCase):
         
         # create Group
         group_name = 'Test_Group'
-        response = client.post('/groups_add/', {'name': group_name})
+        response = client.post('/add/groups/', {'name': group_name})
         self.assertEqual(response.status_code, 302)
         
         try:
@@ -36,8 +36,8 @@ class LoginCreateAddTest(unittest.TestCase):
             group = None
         
         self.assertNotEqual(group, None)
-        
-        response = client.post('/students_add/',    {'name': 'TempStudent',
+
+        response = client.post('/new/students/',    {'name': 'TempStudent',
                                                     'last_name': 'SomeName',
                                                     'birthday_date': '1990-10-10',
                                                     'student_id_card': '98765',

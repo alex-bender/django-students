@@ -5,12 +5,12 @@ from django.shortcuts import render_to_response, redirect, get_object_or_404, re
 from django.template import RequestContext
 
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
 
 from forms import StudentForm, GroupForm
 from models import Student, Group
 
 from django.contrib.auth.decorators import login_required
+from forms import UserCreateForm
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
@@ -28,7 +28,7 @@ def logout_view(request):
 #------------------------------------------------------------------------------
 def CreateUserAndLogin(request, *args, **kwargs):
     
-    user_form = UserCreationForm(request.POST)
+    user_form = UserCreateForm(request.POST)
     if user_form.is_valid():
         username = user_form.clean_username()
         password = user_form.clean_password2()
@@ -44,9 +44,9 @@ def CreateUserAndLogin(request, *args, **kwargs):
 #------------------------------------------------------------------------------
 @login_required
 def students(request):
-    students_list = Student.objects.all().order_by('name')
+    students = Student.objects.all().order_by('name')
     return render_to_response('students.html',
-                              {'students_list': students_list,},
+                              {'students': students,},
                               context_instance=RequestContext(request))
 #------------------------------------------------------------------------------
 @login_required(redirect_field_name='/students_add/')
@@ -81,7 +81,9 @@ def students_delete(request, student_id):
 #------------------------------------------------------------------------------
 @login_required
 def groups(request):
+    # agregate?
     groups = Group.objects.all().order_by('pk')
+    # select relations?
     return render_to_response('groups.html',
                               {'groups': groups,},
                               context_instance=RequestContext(request))
@@ -115,7 +117,20 @@ def group_list(request, group_name):
     
     return render_to_response('students_in_group.html',
                               {'students_list': students_list,
-                              'group_name': group_name},)
+                              'group_name': group_name},
+                              context_instance=RequestContext(request))
+#------------------------------------------------------------------------------
+@login_required
+def bred(request, student_id):
+    student = get_object_or_404(Student, pk=student_id)
+    form = StudentForm(request.POST or None, instance=student)
+    if form.is_valid():
+        form.save()
+        return redirect(students)
+    return render_to_response('students_edit.html',
+                              {'student_form': form,
+                               'student_id': student_id},
+                              context_instance=RequestContext(request))
 #------------------------------------------------------------------------------
 @login_required
 def groups_delete(request, group_id):

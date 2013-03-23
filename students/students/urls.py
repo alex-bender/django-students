@@ -18,18 +18,18 @@ urlpatterns = patterns('',
     url(r'^index/$', 'main.views.index'),
     url(r'^login/', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
     url(r'^logout/$', 'main.views.logout_view'),
-    url(r'^new_user/$', 'main.views.CreateUserAndLogin'),
+    url(r'^new/user/$', 'main.views.CreateUserAndLogin'),
 
     url(r'^students/$', 'main.views.students'),
-    url(r'^students_add/$', 'main.views.students_add'),
-    url(r'^students_edit/(?P<student_id>\d+)/$','main.views.students_edit'),
-    url(r'^students_delete/(?P<student_id>\d+)/$','main.views.students_delete'),
+    url(r'^new/students/$', 'main.views.students_add'),
+    url(r'^edit/students/(?P<student_id>\d+)/$','main.views.students_edit'),
+    url(r'^delete/students/(?P<student_id>\d+)/$','main.views.students_delete'),
 #------------------------------------------------------------------------------
     url(r'^groups/$', 'main.views.groups'),
-    url(r'^groups_add/$', 'main.views.groups_add'),
-    url(r'^groups_edit/(?P<group_id>\d+)/$','main.views.groups_edit'),
-    url(r'^group_list/(?P<group_name>\w+)/$','main.views.group_list'),
-    url(r'^groups_delete/(?P<group_id>\d+)/$','main.views.groups_delete'),
+    url(r'^add/groups/$', 'main.views.groups_add'),
+    url(r'^edit/groups/(?P<group_id>\d+)/$','main.views.groups_edit'),
+    url(r'^delete/groups/(?P<group_id>\d+)/$','main.views.groups_delete'),
+    url(r'^list/group/(?P<group_name>\w+)/$','main.views.group_list'),
 #------------------------------------------------------------------------------
 
 

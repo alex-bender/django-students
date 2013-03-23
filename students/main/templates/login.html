@@ -1,21 +1,23 @@
+<html>
+    <head>
+        <title>login</title>
+    </head>
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
 
 <div id="stylized" class="myform">
-<form id="form" name="form" method="post" action="/login/" >    
-{% csrf_token %}
-
-<label>Username or Email</label>
-{{ form.username }}
-
-<label>Password</label>
-{{ form.password }}
-
-<button type="submit" value="Login">Login</button>
-<div class="spacer"> </div>
-
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
-{% if form.errors %}
-    {{ form.errors.as_li }}
-{% endif %}
+    <form id="form" name="form" method="post" action="/login/" >    
+        {% csrf_token %}
+        {% if form.errors %}{{ form.errors }}{% endif %}
+        <label>Username or Email</label>
+        {{ form.username }}
+        
+        <label>Password</label>
+        {{ form.password }}
+        
+        <button type="submit" value="Login">Login</button>
+        <div class="spacer"> </div>
+        
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
 </div>
+</html>

@@ -1,21 +1,37 @@
 {% extends "base.html" %}
 
-{% block students_in_group %}
-<ul>
-<li><a href="/">Home</a></li>
-</ul>
+{% block students %}
     {% if students_list %}
-        <H1>Students in group {{ group_name }}</H1>
-            Name | Last name | id num<br/>      
-        {% for student in students_list %}
-</hr>
-            {{ student.name }} -
-            {{ student.last_name }} -
-            {{ student.student_id_card }}
-            </br>
-            
-        {% endfor %}
-        
-    {% endif %}
+        <H2>Students in group <span class="error">{{ group_name|title }}</span></H2>
+        <li><a href="{{ request.META.HTTP_REFERER }}">Back</a></li>      
+            </hr>
+            <table border="0">
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        Last Name
+                    </td>
+                    <td>
+                        Student card id
+                    </td>
+                </tr>
+            {% for student in students_list %}                
+                <tr>
+                    <td>
+                        <a href="/edit/students/{{ student.pk }}/">{{ student.name|title }}</a>
+                    </td>
+                    <td>
+                        {{ student.last_name|title }}
+                    </td>
+                    <td>
+                        {{ student.student_id_card }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+      
 
-{% endblock %}
+    {% endif %}
+{% endblock students %}
