@@ -26,7 +26,7 @@ def logout_view(request):
     return HttpResponseRedirect('/index/')
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
-def CreateUserAndLogin(request, *args, **kwargs):
+def create_user_and_login(request, *args, **kwargs):
     
     user_form = UserCreateForm(request.POST)
     if user_form.is_valid():

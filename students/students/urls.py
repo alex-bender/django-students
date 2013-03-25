@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     url(r'^index/$', 'main.views.index'),
     url(r'^login/', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
     url(r'^logout/$', 'main.views.logout_view'),
-    url(r'^new/user/$', 'main.views.CreateUserAndLogin'),
+    url(r'^new/user/$', 'main.views.create_user_and_login'),
 
     url(r'^students/$', 'main.views.students'),
     url(r'^new/students/$', 'main.views.students_add'),
