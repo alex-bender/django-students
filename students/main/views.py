@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+from django.views.generic.base import TemplateView, View
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect, get_object_or_404, render
@@ -11,35 +11,50 @@ from models import Student, Group
 
 from django.contrib.auth.decorators import login_required
 from forms import UserCreateForm
+from django.views.generic.edit import UpdateView
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
+class HomePageView(TemplateView):
 
-def index(request):
-    return render(request, 'base.html')
-#------------------------------------------------------------------------------
-#------------------------------------------------------------------------------
+    template_name = "base.html"
 
+    def get_context_data(self, **kwargs):
+        context = super(HomePageView, self).get_context_data(**kwargs)
+        #context['latest_articles'] = Article.objects.all()[:5]
+        return context
+#==============================================================================
 #------------------------------------------------------------------------------
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/index/')
 #------------------------------------------------------------------------------
-#------------------------------------------------------------------------------
-def create_user_and_login(request, *args, **kwargs):
-    
-    user_form = UserCreateForm(request.POST)
-    if user_form.is_valid():
-        username = user_form.clean_username()
-        password = user_form.clean_password2()
-        user_form.save()
-        user = authenticate(username=username,
-                            password=password)
-        login(request, user)
-        return redirect(index)
-    return render(request,
-                  'registration.html',
-                  { 'form': user_form })
+#==============================================================================
+class CreteUserAndLogin(View):
+    form_class = UserCreateForm
+    initial = {
+               #'username': 'YourName'
+               }
+    template_name = 'registration.html'
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(initial=self.initial)
+        return render(request,  self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            username = form.clean_username()
+            password = form.clean_password2()
+            form.save()
+            user = authenticate(username=username,
+                                password=password)
+            login(request, user)
+            #return redirect(index)
+            return HttpResponseRedirect('/index/')
+
+        return render(request, self.template_name, {'form': form})
+#==============================================================================
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 @login_required
@@ -81,9 +96,9 @@ def students_delete(request, student_id):
 #------------------------------------------------------------------------------
 @login_required
 def groups(request):
-    # agregate?
+    
     groups = Group.objects.all().order_by('pk')
-    # select relations?
+    
     return render_to_response('groups.html',
                               {'groups': groups,},
                               context_instance=RequestContext(request))
@@ -99,10 +114,13 @@ def groups_add(request):
                               {'group_form': form},
                               context_instance=RequestContext(request))
 #------------------------------------------------------------------------------
+#==============================================================================
 @login_required
 def groups_edit(request, group_id):
+    
     group = get_object_or_404(Group, pk=group_id)
     form = GroupForm(request.POST or None, instance=group)
+    
     if form.is_valid():
         form.save()
         return redirect(groups)
@@ -110,6 +128,29 @@ def groups_edit(request, group_id):
                               {'group_form': form,
                                'group_id': group_id},
                               context_instance=RequestContext(request))    
+#==============================================================================
+class GroupsEdit(View):
+    
+    form_class = GroupForm
+    initial = {}
+    template_name = 'students_in_group.html'
+
+    def get(self, request, *args, **kwargs):
+        import ipdb;ipdb.set_trace()
+        group_id = kwargs.pop('group_id')
+        group = get_object_or_404(Group, pk=group_id)
+        form = self.form_class(initial={'group': group})
+        return render(request,  self.template_name, {'group_form': form,
+                                                     'group_id': group_id},)
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/groups/')
+
+        return render(request, self.template_name, {'form': form})
+#==============================================================================
 #------------------------------------------------------------------------------
 @login_required
 def group_list(request, group_name):
