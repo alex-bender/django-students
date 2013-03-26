@@ -3,7 +3,7 @@
 {% block students %}
 <h1>Students</h1>
 
-<a href="/new/students/">[Add student]</a>
+<a href="/new/student/">[Add student]</a>
 {% if students %}
     <table border=0>
         <tr>
@@ -20,11 +20,11 @@
             <a href="/edit/students/{{ student.pk }}/">{{ student.last_name|title }}</a>
           </td>
           <td>
-            <a href="/edit/students/{{ student.pk }}/">{{ student.group|title }}</a>
+            <a href="/edit/groups/{{ student.group.pk }}/">{{ student.group|title }}</a>
           </td>            
           <td>
            [ <a href="/edit/students/{{ student.pk }}/">edit</a> |
-            <a href="/delete/students/{{ student.pk }}/">delete</a> ]
+            <a href="/delete/student/{{ student.pk }}/">delete</a> ]
           </td>      
         </tr>
         {% endfor %}    

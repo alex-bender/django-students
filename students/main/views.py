@@ -1,40 +1,33 @@
 from django.views.generic.base import TemplateView, View
+from django.views.generic.edit import FormView, CreateView, DeleteView
+from django.views.generic import ListView
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, redirect, get_object_or_404, render
 from django.template import RequestContext
 
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
-from forms import StudentForm, GroupForm
+from forms import StudentForm, GroupForm, UserCreateForm
 from models import Student, Group
 
-from django.contrib.auth.decorators import login_required
-from forms import UserCreateForm
-from django.views.generic.edit import UpdateView
 
 #------------------------------------------------------------------------------
 #------------------------------------------------------------------------------
 class HomePageView(TemplateView):
-
     template_name = "base.html"
-
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
-        #context['latest_articles'] = Article.objects.all()[:5]
         return context
-#==============================================================================
-#------------------------------------------------------------------------------
+
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/index/')
-#------------------------------------------------------------------------------
-#==============================================================================
+
 class CreteUserAndLogin(View):
     form_class = UserCreateForm
-    initial = {
-               #'username': 'YourName'
-               }
+    initial = {}
     template_name = 'registration.html'
 
     def get(self, request, *args, **kwargs):
@@ -50,31 +43,24 @@ class CreteUserAndLogin(View):
             user = authenticate(username=username,
                                 password=password)
             login(request, user)
-            #return redirect(index)
+
             return HttpResponseRedirect('/index/')
 
         return render(request, self.template_name, {'form': form})
-#==============================================================================
-#------------------------------------------------------------------------------
-#------------------------------------------------------------------------------
-@login_required
-def students(request):
-    students = Student.objects.all().order_by('name')
-    return render_to_response('students.html',
-                              {'students': students,},
-                              context_instance=RequestContext(request))
-#------------------------------------------------------------------------------
-@login_required(redirect_field_name='/students_add/')
-def students_add(request):
-    form = StudentForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect(students)
 
-    return render_to_response('students_add.html',
-                              {'student_form': form},
-                              context_instance=RequestContext(request))    
-#------------------------------------------------------------------------------
+class Students(ListView):
+    model = Student
+    template_name = 'students.html'
+    context_object_name = 'students'
+    
+    def get_queryset(self):
+        return Student.objects.all().order_by('name')
+
+class StudentAdd(CreateView):
+    form_class = StudentForm
+    template_name = 'student_add.html'
+    success_url = '/students/'
+
 @login_required
 def students_edit(request, student_id):
     student = get_object_or_404(Student, pk=student_id)
@@ -86,35 +72,26 @@ def students_edit(request, student_id):
                               {'student_form': form,
                                'student_id': student_id},
                               context_instance=RequestContext(request))
-#------------------------------------------------------------------------------
+
 @login_required
 def students_delete(request, student_id):
     Student.objects.get(pk=student_id).delete()
 
     return redirect(students)
-#------------------------------------------------------------------------------
-#------------------------------------------------------------------------------
-@login_required
-def groups(request):
-    
-    groups = Group.objects.all().order_by('pk')
-    
-    return render_to_response('groups.html',
-                              {'groups': groups,},
-                              context_instance=RequestContext(request))
-#------------------------------------------------------------------------------
-@login_required
-def groups_add(request):
-    form = GroupForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect(groups)
-    
-    return render_to_response('groups_add.html',
-                              {'group_form': form},
-                              context_instance=RequestContext(request))
-#------------------------------------------------------------------------------
-#==============================================================================
+
+class Groups(ListView):
+    model = Group
+    template_name = 'groups.html'
+    context_object_name = 'groups'
+
+    def get_queryset(self):
+        return Group.objects.order_by('pk')
+
+class GroupAdd(CreateView):
+    form_class = GroupForm
+    template_name = 'group_add.html'
+    success_url = '/groups/'
+
 @login_required
 def groups_edit(request, group_id):
     
@@ -128,54 +105,34 @@ def groups_edit(request, group_id):
                               {'group_form': form,
                                'group_id': group_id},
                               context_instance=RequestContext(request))    
-#==============================================================================
-class GroupsEdit(View):
+class GroupsEdit(FormView):
     
     form_class = GroupForm
     initial = {}
     template_name = 'students_in_group.html'
 
-    def get(self, request, *args, **kwargs):
-        import ipdb;ipdb.set_trace()
-        group_id = kwargs.pop('group_id')
-        group = get_object_or_404(Group, pk=group_id)
-        form = self.form_class(initial={'group': group})
-        return render(request,  self.template_name, {'group_form': form,
-                                                     'group_id': group_id},)
-
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/groups/')
-
-        return render(request, self.template_name, {'form': form})
-#==============================================================================
-#------------------------------------------------------------------------------
-@login_required
-def group_list(request, group_name):
-    students_list = Student.objects.filter(group__name=group_name)
+class GroupList(ListView):
+    model = Student
+    template_name = 'students_in_group.html'
+    context_object_name = 'students_list'
     
-    return render_to_response('students_in_group.html',
-                              {'students_list': students_list,
-                              'group_name': group_name},
-                              context_instance=RequestContext(request))
-#------------------------------------------------------------------------------
-@login_required
-def bred(request, student_id):
-    student = get_object_or_404(Student, pk=student_id)
-    form = StudentForm(request.POST or None, instance=student)
-    if form.is_valid():
-        form.save()
-        return redirect(students)
-    return render_to_response('students_edit.html',
-                              {'student_form': form,
-                               'student_id': student_id},
-                              context_instance=RequestContext(request))
-#------------------------------------------------------------------------------
+    def get_queryset(self):
+        group_name = self.kwargs.get('group_name')
+        print group_name
+        return self.model.objects.filter(group__name=group_name)
+
 @login_required
 def groups_delete(request, group_id):
     Group.objects.get(pk=group_id).delete()
     
     return redirect(groups)
-#------------------------------------------------------------------------------
+
+class GroupDelete(DeleteView):
+
+# def get
+# def post ????
+
+    model = Group
+    template_name = 'item_confirm_delete.html'
+    success_url = '/groups/'
+

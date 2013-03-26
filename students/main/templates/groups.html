@@ -3,7 +3,7 @@
 {% block groups %}
 <h1>Groups</h1>
 
-<a href="/add/groups/">[Add Group]</a>
+<a href="/add/group/">[Add Group]</a>
 {% if groups %}
     <table border=0>
         <tr>
@@ -28,7 +28,7 @@
           </td>            
           <td>
            [ <a href="/edit/groups/{{ group.pk }}/">edit</a> |
-            <a href="/delete/groups/{{ group.pk }}/">delete</a> ]
+            <a href="/delete/group/{{ group.pk }}/">delete</a> ]
           </td> 
    
         </tr>
