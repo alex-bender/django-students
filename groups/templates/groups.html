@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block groups %}
+<h1>Groups</h1>
+
+<a href="{% url group:add %}">[Add Group]</a>
+{% if groups %}
+    <table border=0>
+        <tr>
+          <th>Name</th>
+          <th>Senior</th>  
+          <th>Num</th>  
+          <th>&nbsp;</th>
+        </tr>
+        {% for group in groups %} 
+        <tr>
+          <td>
+                
+            <a href="{% url group:list group.pk %}">
+                {{ group.name|title }}
+            </a>
+          </td>
+          <td>
+
+              {% if group.senior.pk %}
+              <a href="{% url student:edit group.senior.pk %}">{{ group.senior|title }}</a>
+              {% else %}
+              <a href="{% url student:add %}">[ Add senior ]</a>
+              {% endif %}
+          </td>
+          <td>
+              {{ group.groups.get_query_set.count }}
+          </td>            
+          <td>
+           [ <a href="{% url group:edit group.pk %}">edit</a> |
+            <a href="{% url group:delete group.pk %}">delete</a> ]
+          </td> 
+   
+        </tr>
+        {% endfor %}    
+    </table>
+
+{% else %}
+    <p>No groups in database created.</p>
+{% endif %}
+{% endblock groups %}

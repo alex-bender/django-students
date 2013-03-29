@@ -1,0 +1,48 @@
+{% load custom_tags %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html"; />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
+    <title>{{ settings.SITE_NAME }}</title>
+</head>
+
+<body class="base">
+        <div id="container">
+            <div id="header">
+                <h1>Welcome, {{ request.user|title }}!</h1>
+                <!-- end #header --></div>
+            <div id="links">
+             
+                    {% if not user.is_authenticated %}
+                        <a href="{% url new_user %}">[Register]</a>
+                    {% endif %}
+
+                    
+                    {% if user.is_authenticated %}   
+                        <a href="/logout/">[Log out]</a>
+                        <div>                           
+                            <a href="/students/">[Students]</a>
+                            <a href="/groups/">[Groups]</a>
+                        </div>         
+                       [{% edit_list  user %}] 
+                    {% endif %}
+                
+                <!-- end #links -->
+            </div>
+            <div id="main_content">
+                <div id="note">
+                {% if not user.is_authenticated %}            
+                        <h2 align="center"><a href="/login/">Log in, please</a></h2>
+                {% endif %}
+                {% block groups %}{% endblock groups %}
+                {% block students %}{% endblock students %}
+                </div>
+                <!-- end #main_content -->
+            </div>
+            <div id="footer">
+                <div id="copyright">Developed by Alex Bender, 2013</div>
+                <!-- end #footer --></div>
+        </div>
+    </body>
+</html>

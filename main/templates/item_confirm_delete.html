@@ -1,0 +1,13 @@
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
+<!-- item_confirm_delete.html -->
+<div id="stylized" class="myform">
+{% if obj == "group" %}
+<form action="{% url group:delete object.pk %}" method="post">
+{% elif obj == "student" %}
+<form action="{% url student:delete object.pk %}" method="post">
+{% endif %}
+    {% csrf_token %}
+    <h1 class="error">This action will delete {{ obj }} {{ object.name|title }} <br></h1>
+    <button type="submit">Delete</button>
+</form>
+</div>

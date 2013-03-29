@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block students %}
+<h1>Add student</h1>
+<a href="{{ request.META.HTTP_REFERER }}">Back</a>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url student:add %}" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Save" />
+</form>
+{% endblock students %}

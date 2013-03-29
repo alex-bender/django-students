@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block groups %}
+
+<h2>Edit Groups</h2>
+<a href="{{ request.META.HTTP_REFERER }}">Back</a>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url group:edit group.pk %}" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Save" />
+</form>
+{% endblock groups %}

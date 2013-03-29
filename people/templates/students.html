@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block students %}
+<h1>Students</h1>
+
+<a href="{% url student:add %}">[Add student]</a>
+{% if students %}
+    <table border=0>
+        <tr>
+          <th>Name</th>
+          <th>Last name</th>
+          <th>Group</th>    
+        </tr>
+        {% for student in students %} 
+        <tr>
+          <td>
+            <a href="{% url student:edit student.pk %}">{{ student.name|title }}</a>
+          </td>
+          <td>
+            <a href="{% url student:edit student.pk %}">{{ student.last_name|title }}</a>
+          </td>
+          <td>
+            <a href="{% url group:edit student.group.pk %}">{{ student.group|title }}</a>
+          </td>            
+          <td>
+           [ <a href="{% url student:edit student.pk %}">edit</a> |
+            <a href="{% url student:delete student.pk %}">delete</a> ]
+          </td>      
+        </tr>
+        {% endfor %}    
+    </table>
+
+{% else %}
+    <p>No students in database created.</p>
+{% endif %}
+{% endblock students %}
