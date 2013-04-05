@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse_lazy
 from groups.models import Group
 from people.models import Student
 
+
 class Groups(ListView):
 
     model = Group
@@ -14,8 +15,8 @@ class Groups(ListView):
     context_object_name = 'groups'
 
     def get_queryset(self):
-#        import ipdb;ipdb.set_trace()
         return self.model.objects.order_by('pk')
+
 
 class GroupAdd(CreateView):
 

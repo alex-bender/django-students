@@ -5,7 +5,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+# ('Your Name', 'your_email@example.com'),
 )
 
 MANAGERS = ADMINS
@@ -13,13 +13,13 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'mydatabase',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'NAME': 'mydatabase', # Or path to database file if using sqlite3.
+        'USER': '', # Not used with sqlite3.
+        'PASSWORD': '', # Not used with sqlite3.
+        'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '', # Set to empty string for default. Not used with sqlite3.
     }
-    
+
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -61,32 +61,29 @@ USE_TZ = True
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = '/media/'
-
+MEDIA_ROOT = os.path.join(PROJECT_DIR, 'static', 'media')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
+# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+# trailing slash.
+# Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
+MEDIA_URL = STATIC_URL + "media/"
+
 LOGIN_URL = '/login/'
 
 LOGIN_REDIRECT_URL = '/index/'
-
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-
 
 # Additional locations of static files
 STATICFILES_DIRS = (
     '/home/Projects/django-students/students/main/static',
 )
-
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -101,7 +98,7 @@ SECRET_KEY = '8i^-!m(trst)x5)ic6ltkh15=u6-9l&amp;6&amp;86rw2n(ko&amp;&amp;((5%yl
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,7 +108,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'main.TimeRenderMiddle.TimeRenderMiddleware',
+    'main.time_render_middle.TimeRenderMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
@@ -128,8 +125,8 @@ DEBUG_TOOLBAR_PANELS = (
 )
 
 DEBUG_TOOLBAR_CONFIG = {
-                        'INTERCEPT_REDIRECTS': False,
-                        }
+    'INTERCEPT_REDIRECTS': False,
+}
 
 ROOT_URLCONF = 'main.urls'
 
@@ -137,22 +134,21 @@ ROOT_URLCONF = 'main.urls'
 WSGI_APPLICATION = 'students.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+# Always use forward slashes, even on Windows.
+# Don't forget to use absolute paths, not relative paths.
 )
 
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-#    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.staticfiles',
-    
+
     'main',
     'groups',
     'people',
@@ -161,7 +157,7 @@ INSTALLED_APPS = (
 )
 
 # To enable DDtb uncomment
-INTERNAL_IPS = ( '127.0.0.1', ) 
+INTERNAL_IPS = ( '127.0.0.1', )
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

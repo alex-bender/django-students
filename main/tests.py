@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 from groups.models import Group 
 from people.models import Student
+
 from django.core.urlresolvers import reverse, reverse_lazy
 
 class LoginCreateAddTest(unittest.TestCase):

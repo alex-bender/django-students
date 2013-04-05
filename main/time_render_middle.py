@@ -20,7 +20,7 @@ class TimeRenderMiddleware(object):
         
         for query in queries:
             query_time += float(query['time'])
-            query_count += int(1)
+            query_count += 1
 
         end_time = time()
         num_queries_new =  len(connection.queries)
@@ -36,7 +36,7 @@ class TimeRenderMiddleware(object):
         try:
             diff_time = end_time - request.session['time_start']
             diff_queries = num_queries_new - request.session['num_queries_old']
-        except:
+        except KeyError:
             diff_time = 0
             diff_queries = 0
         

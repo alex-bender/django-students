@@ -15,7 +15,9 @@ class Group(models.Model):
     
     def __unicode__(self):
         return self.name
-#------------------------------------------------------------------------------
+
+
+
 @receiver(post_save, sender=Group)
 def group_post_save(sender, **kwargs):
     LogModel.objects.create(which='Group', what='Save')
