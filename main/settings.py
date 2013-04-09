@@ -13,7 +13,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'mydatabase', # Or path to database file if using sqlite3.
+        'NAME': '../mydatabase', # Or path to database file if using sqlite3.
         'USER': '', # Not used with sqlite3.
         'PASSWORD': '', # Not used with sqlite3.
         'HOST': '', # Set to empty string for localhost. Not used with sqlite3.
@@ -36,7 +36,8 @@ SITE_ID = 1
 
 SITE_NAME = 'Students Manage'
 
-AUTHENTICATION_BACKENDS = ('main.username_email_login.EmailOrUsernameModelBackend',)
+AUTHENTICATION_BACKENDS = (
+'core.username_email_login.EmailOrUsernameModelBackend',)
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
@@ -45,7 +46,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.media",
     "django.core.context_processors.static",
-    "main.context_processors.my_cont_processor",
+    "core.context_processors.my_cont_processor",
 )
 
 # If you set this to False, Django will make some optimizations so as not
@@ -82,7 +83,7 @@ LOGIN_REDIRECT_URL = '/index/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    '/home/Projects/django-students/students/main/static',
+
 )
 
 STATICFILES_FINDERS = (
@@ -108,7 +109,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'main.time_render_middle.TimeRenderMiddleware',
+    'core.time_render_middle.TimeRenderMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
@@ -131,7 +132,7 @@ DEBUG_TOOLBAR_CONFIG = {
 ROOT_URLCONF = 'main.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'students.wsgi.application'
+WSGI_APPLICATION = 'main.wsgi.application'
 
 TEMPLATE_DIRS = (
 # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -152,12 +153,19 @@ INSTALLED_APPS = (
     'main',
     'groups',
     'people',
+    'backbone',
     'south',
     'debug_toolbar',
+    'rest_framework',
 )
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'PAGINATE_BY': 10
+}
+
 # To enable DDtb uncomment
-INTERNAL_IPS = ( '127.0.0.1', )
+# INTERNAL_IPS = ( '127.0.0.1', )
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -185,5 +193,6 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-    }
+    },
+
 }

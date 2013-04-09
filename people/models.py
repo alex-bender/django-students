@@ -9,7 +9,8 @@ class Student(models.Model):
     name = models.CharField('Name', max_length=30)
     last_name = models.CharField('Surname', max_length=30)
     birthday_date = models.DateField()
-    student_id_card = models.DecimalField('Student Id', max_digits=10, decimal_places=0)
+    student_id_card = models.DecimalField('Student Id', max_digits=10,
+                                          decimal_places=0)
     group = models.ForeignKey('groups.Group', related_name='groups')
     
 

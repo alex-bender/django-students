@@ -1,17 +1,19 @@
 from django.db import connection
 
 from time import time
-#------------------------------------------------------------------------------
-#------------------------------------------------------------------------------
+
+
 class TimeRenderMiddleware(object):
 
-#------------------------------------------------------------------------------
+    start_time = time()
+
+    num_queries_old = len(connection.queries)
+
     def process_request(self, request):
         # edit this stuff
         request.session['time_start'] = time()
         request.session['num_queries_old'] = len(connection.queries)
 
-#------------------------------------------------------------------------------
     def process_response(self, request, response):
         
         queries = connection.queries
@@ -23,8 +25,7 @@ class TimeRenderMiddleware(object):
             query_count += 1
 
         end_time = time()
-        num_queries_new =  len(connection.queries)
-        
+        num_queries_new = len(connection.queries)
 
         content = response.content
         index = content.upper().find('</BODY>')
@@ -34,16 +35,16 @@ class TimeRenderMiddleware(object):
         before = content[:index]
         after = content[index:]
         try:
-            diff_time = end_time - request.session['time_start']
-            diff_queries = num_queries_new - request.session['num_queries_old']
+            diff_time = end_time - self.start_time
+            diff_queries = num_queries_new - self.num_queries_old
         except KeyError:
             diff_time = 0
             diff_queries = 0
         
-        message = """<div id="query_time"></br>\n<small><center>Time to render page is: %.4s</br>\n
-        Time to sql Query: %s</br>
-        Count of queries: %s</center></small></div>""" % (diff_time, query_time, diff_queries)
+        message = """<div id="query_time"></br>\n
+        <small><center>Time to render page is: %.4s</br>\n
+        Time to sql Query: %s</br>Count of queries: %s</center></small>
+        </div>""" % (diff_time, query_time, diff_queries)
         content = before + message + after
-        response.content =  content
+        response.content = content
         return response
-#------------------------------------------------------------------------------
