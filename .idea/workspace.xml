@@ -2,35 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e822c6df-1f1c-4b05-a8ae-117b40e394fd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/context_processors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/groups/migrations/0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/initial_data.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/main/context_processors.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mydatabase" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/students/.directory" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/students/urls.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/groups/migrations/__init__.py" afterPath="$PROJECT_DIR$/backbone/serializers.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/main/time_render_middle.py" afterPath="$PROJECT_DIR$/core/time_render_middle.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/main/username_email_login.py" afterPath="$PROJECT_DIR$/core/username_email_login.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/students/__init__.py" afterPath="$PROJECT_DIR$/backbone/urls.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/students/settings.py" afterPath="$PROJECT_DIR$/main/settings.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/students/wsgi.py" afterPath="$PROJECT_DIR$/main/wsgi.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/django-students.iml" afterPath="$PROJECT_DIR$/.idea/django-students.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage.py" afterPath="$PROJECT_DIR$/manage.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/people/models.py" afterPath="$PROJECT_DIR$/people/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/snippets/permissions.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/snippets/serializers.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/snippets/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/settings.py" afterPath="$PROJECT_DIR$/main/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/urls.py" afterPath="$PROJECT_DIR$/main/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="django-students.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365264085383" ignored="false" />
-    <file path="/settings.py" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365521793237" ignored="false" />
+    <file path="/settings.py" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365603791406" ignored="false" />
     <file path="/base.html" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365097112996" ignored="false" />
-    <file path="/urls.py" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365532179458" ignored="false" />
+    <file path="/urls.py" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365616963282" ignored="false" />
     <file path="/views.py" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365530122894" ignored="false" />
     <file path="/TimeRenderMiddle.py" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365166066849" ignored="false" />
     <file path="/a.dummy" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365263963405" ignored="false" />
@@ -39,7 +23,7 @@
     <file path="/time_render_middle.py" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365522297670" ignored="false" />
     <file path="$PROJECT_DIR$/main/management/commands/show_all.py" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365518119967" ignored="false" />
     <file path="/initial_data.json" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365518395376" ignored="false" />
-    <file path="/serializers.py" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365526897779" ignored="false" />
+    <file path="/serializers.py" changelist="e822c6df-1f1c-4b05-a8ae-117b40e394fd" time="1365613032618" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +43,7 @@
       <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="0" selection-start="941" selection-end="941" vertical-scroll-proportion="0.0">
+            <state line="16" column="4" selection-start="517" selection-end="517" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -67,12 +51,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backbone/urls.py">
+      <file leaf-file-name="urls.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/snippets/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="829" selection-end="829" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/snippets/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="29" selection-start="725" selection-end="725" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/snippets/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="55" column="44" selection-start="1722" selection-end="1722" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="serializers.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/snippets/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="36" selection-start="323" selection-end="332" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -81,7 +98,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backbone/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="7" selection-start="369" selection-end="369" vertical-scroll-proportion="0.0">
+            <state line="25" column="31" selection-start="735" selection-end="735" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -92,7 +109,7 @@
       <file leaf-file-name="serializers.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backbone/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="10" column="42" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -100,10 +117,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="168" column="0" selection-start="5240" selection-end="5240" vertical-scroll-proportion="0.50617284">
+            <state line="164" column="21" selection-start="5188" selection-end="5188" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -127,11 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/groups/views.py" />
-        <option value="$PROJECT_DIR$/groups/models.py" />
-        <option value="$PROJECT_DIR$/main/TimeRenderMiddle.py" />
-        <option value="$PROJECT_DIR$/students/settings.py" />
-        <option value="$PROJECT_DIR$/students/urls.py" />
         <option value="$PROJECT_DIR$/main/wsgi.py" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/main/time_render_middle.py" />
@@ -140,17 +152,21 @@
         <option value="$PROJECT_DIR$/people/models.py" />
         <option value="$PROJECT_DIR$/backbone/views.py" />
         <option value="$PROJECT_DIR$/backbone/serializers.py" />
-        <option value="$PROJECT_DIR$/main/urls.py" />
         <option value="$PROJECT_DIR$/backbone/urls.py" />
+        <option value="$PROJECT_DIR$/main/urls.py" />
+        <option value="$PROJECT_DIR$/snippets/models.py" />
         <option value="$PROJECT_DIR$/main/settings.py" />
+        <option value="$PROJECT_DIR$/snippets/permissions.py" />
+        <option value="$PROJECT_DIR$/snippets/views.py" />
+        <option value="$PROJECT_DIR$/snippets/serializers.py" />
+        <option value="$PROJECT_DIR$/snippets/urls.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="176" />
-    <option name="y" value="116" />
-    <option name="width" value="1383" />
-    <option name="height" value="900" />
+    <option name="y" value="35" />
+    <option name="width" value="1920" />
+    <option name="height" value="1009" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -234,21 +250,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django-students" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django-students" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groups" />
+              <option name="myItemId" value="snippets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -482,14 +484,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="176" y="116" width="1383" height="900" extended-state="0" />
+    <frame x="0" y="35" width="1920" height="1009" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="306" y="181" width="1183" height="594" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21444695" sideWeight="0.94622093" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15273312" sideWeight="0.960177" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298611" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -560,135 +563,133 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/logging/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1538" column="4" selection-start="54701" selection-end="54701" vertical-scroll-proportion="0.33266532">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/st/local/lib/python2.7/site-packages/rest_framework/decorators.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="22" selection-start="3087" selection-end="3105" vertical-scroll-proportion="1.3827655">
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/time_render_middle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="11" selection-start="244" selection-end="244" vertical-scroll-proportion="0.39078155">
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/people/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="40" selection-start="942" selection-end="942" vertical-scroll-proportion="0.63126254">
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/groups/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/st/local/lib/python2.7/site-packages/rest_framework/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="772" column="6" selection-start="26644" selection-end="26644" vertical-scroll-proportion="-0.7735471">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/st/local/lib/python2.7/site-packages/django/contrib/auth/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="6" selection-start="3407" selection-end="3407" vertical-scroll-proportion="-1.0246913">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/st/local/lib/python2.7/site-packages/django/utils/six.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="0" selection-start="5594" selection-end="5594" vertical-scroll-proportion="0.5555556">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm20/system/python_stubs/998574300/__builtin__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4111" column="8" selection-start="139375" selection-end="139375" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.virtualenvs/st/local/lib/python2.7/site-packages/rest_framework/response.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="0" selection-start="1017" selection-end="1017" vertical-scroll-proportion="0.37037036">
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="941" selection-end="941" vertical-scroll-proportion="0.0">
+        <state line="16" column="4" selection-start="517" selection-end="517" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/st/local/lib/python2.7/site-packages/rest_framework/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="772" column="6" selection-start="26644" selection-end="26644" vertical-scroll-proportion="0.11035654">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/st/local/lib/python2.7/site-packages/rest_framework/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="64" selection-start="2137" selection-end="2163" vertical-scroll-proportion="-1.6860465">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/st/local/lib/python2.7/site-packages/rest_framework/decorators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="66" selection-start="2361" selection-end="2361" vertical-scroll-proportion="0.67275745">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/st/local/lib/python2.7/site-packages/Pygments-1.6-py2.7.egg/pygments/lexers/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-3.1944444">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/st/local/lib/python2.7/site-packages/rest_framework/generics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="13" selection-start="2326" selection-end="2326" vertical-scroll-proportion="-3.4027777">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="164" column="21" selection-start="5188" selection-end="5188" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/backbone/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="7" selection-start="369" selection-end="369" vertical-scroll-proportion="0.0">
+        <state line="25" column="31" selection-start="735" selection-end="735" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backbone/urls.py">
+    <entry file="file://$PROJECT_DIR$/snippets/permissions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="829" selection-end="829" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
+        <state line="14" column="27" selection-start="533" selection-end="533" vertical-scroll-proportion="0.32407406">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backbone/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="10" column="42" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/settings.py">
+    <entry file="file://$PROJECT_DIR$/backbone/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="168" column="0" selection-start="5240" selection-end="5240" vertical-scroll-proportion="0.50617284">
-          <folding />
+        <state line="7" column="23" selection-start="300" selection-end="323" vertical-scroll-proportion="0.16203703">
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/snippets/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="29" selection-start="725" selection-end="725" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/snippets/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="36" selection-start="323" selection-end="332" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/snippets/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="44" selection-start="1722" selection-end="1722" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/snippets/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r"^groups/", include('groups.urls', namespace='group')),
     url(r"^students/", include('people.urls', namespace='student')),
     url(r"^back/", include('backbone.urls')),
+    url(r'^snip/', include('snippets.urls')),
     
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
