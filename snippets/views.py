@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_exempt
 from snippets.models import Snippet
 from django.contrib.auth.models import User
 from snippets.serializers import SnippetSerializer, UserSerializer

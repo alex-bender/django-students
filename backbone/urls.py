@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 from rest_framework.urlpatterns import format_suffix_patterns
-from backbone.views import GroupList, GroupDetail  # UserList, UserDetail,
+from backbone.views import GroupList, GroupDetail
 
 from backbone.views import StudentList, StudentDetail
 

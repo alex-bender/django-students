@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 from forms import UserCreateForm
 
+
 class HomePageView(TemplateView):
 
     template_name = "base.html"
@@ -31,3 +32,8 @@ class CreteUserAndLogin(View):
             return HttpResponseRedirect('/index/')
 
         return render(request, self.template_name, {'form': form})
+
+
+class AjaxView(TemplateView):
+
+    template_name = "ajax.html"

@@ -109,7 +109,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'core.time_render_middle.TimeRenderMiddleware',
+    # 'core.time_render_middle.TimeRenderMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
