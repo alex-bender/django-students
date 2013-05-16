@@ -16,4 +16,4 @@ urlpatterns = patterns('backbone.views',
                            name='student-detail'),
                        )
 
-urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'api'])
+urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json'])

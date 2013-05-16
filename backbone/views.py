@@ -19,7 +19,7 @@ def api_root(request, format=None):
     return Response({
         'groups': reverse('group-list', request=request),
         'students': reverse('student-list', request=request),
-        })
+    })
 
 
 class StudentList(generics.ListCreateAPIView):

@@ -6,14 +6,19 @@ from groups.models import Group
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
+    id = serializers.Field()
+
     class Meta:
         model = Group
-        fields = ('url', 'name', 'senior')
+        fields = ('id', 'url', 'name', 'senior')
 
 
 class StudentSerializer(serializers.HyperlinkedModelSerializer):
 
+    id = serializers.Field()
+
     class Meta:
         model = Student
-        fields = ('url', 'name', 'last_name', 'birthday_date',
+        fields = ('id', 'url', 'name', 'last_name', 'birthday_date',
                   'student_id_card', 'group')
+

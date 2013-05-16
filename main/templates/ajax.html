@@ -1,32 +1,125 @@
+{% load verbatim_templatetag %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html"
-      xmlns="http://www.w3.org/1999/html">
+      xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta http-equiv="Content-Type" content="text/html" />
-
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/buttons.css" />
     <script type="text/javascript" src="{{ MEDIA_URL }}underscore.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}jquery-1.9.1.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}backbone.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}jquery_csrf.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}handlebars.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}json2.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}application.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}groups.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}students.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}router.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}lololo.js"></script>
+    <title>HERE</title>
 </head>
-<title>HERE</title>
-<body>
-<div align="center" class="centered">
-    <input id="_id" type="text" value="1"/>
+<body class="base">
 
-    <input id="gr" type="text" value="http://127.0.0.1:8000/api/groups/2/"/>
-    <div id="get">
-        <input type="button" id="ftch" value="fetch"/>
+<script type="text/x-handlebars-template" id="student">
+    {% verbatim %}
+    {{#each students}}
+    <div class="student">
+        <span>Student: </span><a href="{{id}}">{{name}}</a>
+        <a href="#students/edit/{{ id }}" class="button blue" id="student_edit">Edit</a>
+        <a href="#students/delete/{{ id }}" class="button red" id="get_delete">Delete</a>
     </div>
-    <p></p>
-    <script>
+    {{/each}}
+    {% endverbatim %}
+</script>
 
-    </script>
+<script type="text/x-handlebars-template" id="group">
+    {% verbatim %}
+    {{#each groups}}
+    <div class="group">
+        <span>Group: </span><a href="{{id}}">{{name}}</a>
+        <a href="#/groups/edit/{{ id }}" class="button blue" id="group_edit">Edit</a>
+        <a href="#/groups/delete/{{ id }}" class="button red" id="group_delete">Delete</a>
+    </div>
+    {{/each}}
+    {% endverbatim %}
+</script>
+
+<script type="text/x-handlebars-template" id="student-edit-form">
+
+    {% verbatim %}
+    <form class="myform" id="edit_student">
+        <ul>
+            <li>
+                <label>Name</label>
+                <input id="name" type="text" name="name" value="{{student.name}}" maxlength="30" />
+            </li>
+            <li>
+                <label>Last name</label>
+                <input id="last_name" type="text" name="last_name" value="{{student.last_name}}" maxlength="30" />
+            </li>
+            <li>
+
+                <label>Birthday date</label>
+                <input type="text" name="birthday_date" value="{{student.birthday_date}}" />
+            </li>
+            <li>
+
+                <label>Student id card</label>
+                <input type="text" name="student_id_card" value="{{student.student_id_card}}" />
+            </li>
+            <li>
+                <label>Group</label>
+                <select name="group">
+                    {{#each groups}}
+                    <option value="{{url}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </li>
+            <li>
+                <a href="{{ student.id }}" class="button purple" id="student_save">Save</a>
+            </li>
+        </ul>
+    </form>
+    {% endverbatim %}
+</script>
+
+<script type="text/x-handlebars-template" id="group-edit-form">
+    {% verbatim %}
+    <form class="myform" id="edit_group">
+        <ul>
+            <li>
+                <label>Name:</label>
+                <input type="text" name="name" value="{{group.name}}" maxlength="30">
+            </li>
+            <li>
+                <label>Senior</label>
+                <select name="senior">
+                    {{#each students}}
+                    <option value="{{url}}">{{name}}</option>
+                    {{/each }}
+                </select>
+            </li>
+            <li>
+                <a href="{{ group.id }}" class="button purple" id="group_save">Save</a>
+            </li>
+        </ul>
+
+    </form>
+    {% endverbatim %}
+</script>
+
+<div align="center" class="centered">
+    <div id="container" >
+        <div id="stylized" >
+            <div id="students">
+
+            </div>
+            <div id="groups">
+
+            </div>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>
-
-

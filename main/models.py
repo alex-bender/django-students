@@ -11,5 +11,3 @@ class LogModel(models.Model):
     
     def __unicode__(self):
         return "%s %s at %s" % (self.which, self.what, self.when)
-#------------------------------------------------------------------------------
-

@@ -1,4 +1,4 @@
-{% load custom_tags %}
+{% load edit_list_templatetag %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -10,7 +10,7 @@
     <script type="text/javascript" src="{{ MEDIA_URL }}jquery_csrf.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}json2.js"></script>
     <script type="text/javascript" src="{{ MEDIA_URL }}underscore.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}application.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}router.js"></script>
 
     <title>{{ settings.SITE_NAME }}+afpf keys</title>
 </head>
@@ -29,11 +29,9 @@
                     {% if user.is_authenticated %}   
                         <a href="/logout/">[Log out]</a>
                         <div>
-                        {% comment %}
                             <a href="/students/">[Students]</a>
                             <a href="/groups/">[Groups]</a>
-                        {% endcomment %}
-                        </div>         
+                        </div>
                        [{% edit_list  user %}] 
                     {% endif %}
                 
@@ -46,10 +44,8 @@
                 {% endif %}
 
 
-                {% comment %}
                 {% block groups %}{% endblock groups %}
                 {% block students %}{% endblock students %}
-                {% endcomment %}
                 </div>
                 <!-- end #main_content -->
             </div>

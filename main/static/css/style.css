@@ -12,16 +12,16 @@ body  {
     
     width: 80%;
     background: #FFFFFF;
-    margin: 0 auto;             /* автоматические поля (совместно с шириной) выравнивают страницу по центру. */
+    margin: 0 auto;
     margin-top: 10px;
     border: 1px solid #000000;
-    text-align: left;           /* переопределяет свойство text-align: выравнивание элемента body по центру. */
+    text-align: left;
 } 
 .base #header {
     border: 1px solid #000000;
     text-align: center; 
     background: #DDDDDD; 
-    padding: 0 10px;            /* это значение отступа соответствует выравниванию по левому краю элементов в блоках div, расположенных под ним. Если в элементе #header вместо текста используется изображение, отступ можно удалить. */
+    padding: 0 10px;
 }
  
 .base #header h1 {
@@ -36,7 +36,7 @@ body  {
     border: 1px solid #000000;
     text-align: center; 
     background: #FFFF33; 
-    padding: 0 10px;            /* это значение отступа соответствует выравниванию по левому краю элементов в блоках div, расположенных под ним. Если в элементе #header вместо текста используется изображение, отступ можно удалить. */
+    padding: 0 10px;
 } 
 
 
@@ -45,10 +45,10 @@ body  {
     border-right: 2px;
     border-top: 1px;
     float: right; 
-    width: 10em;            /* поскольку этот элемент является обтекаемым, необходимо задать ширину. */
-    background: #EBEBEB;    /* цвет фона будет отображаться только на отрезке содержимого в колонке, но не дальше. */
-    padding: 15px 0;        /* верхний и нижний отступы создают визуальное пространство в этом элементе div.  */
-    margin-left: 10px;      /* левое и правое поля нужно задать для каждого элемента, который будет помещен в боковые колонки. */
+    width: 10em;
+    background: #EBEBEB;
+    padding: 15px 0;
+    margin-left: 10px;
     margin-right: 10px;
 }
 
@@ -71,40 +71,40 @@ body  {
 }
 
 .menu {
-  width: 200px;         /* Ширина меню в пикселах */
-  padding: 5px;         /* Отступы от рамки до пунктов меню */
-  border: 1px solid black   /* Рамка вокруг меню */
+  width: 200px;
+  padding: 5px;
+  border: 1px solid black
 
 }
 
 .menu A {
-    width: 97%;                 /* Ширина пунктов меню */
-    padding: 2px;               /* Отступ от рамки вокруг ссылки до текста */
-    display: block;             /* Ссылка как блочный элемент */
-    border: 1px solid white;    /* Маскируем рамку вокруг ссылки */
-    text-decoration: none       /* Убираем подчеркивание у ссылок */
+    width: 97%;
+    padding: 2px;
+    display: block;
+    border: 1px solid white;
+    text-decoration: none
 }
 
 .menu A:hover {
     margin: 10px;
-    background: #faf3d2;        /* Цвет фона под ссылкой */
-    color: #800000;             /* Новый цвет ссылки */
-    border: 1px dashed #634f36  /* Рамка вокруг ссылки */
+    background: #faf3d2;
+    color: #800000;
+    border: 1px dashed #634f36
 }
 .base #main_content {
-  margin: 0 13em 0 10px;        /* значение левого поля равно значению верхнего и нижнего колонтитула, в результате чего происходит выравнивание по левому краю документа. */
+  margin: 0 13em 0 10px;
 } 
 .base #footer { 
-    padding: 0 10px;            /* это значение отступа соответствует выравниванию по левому краю элементов в блоках div, расположенных над ним. */
+    padding: 0 10px;
     background:#DDDDDD;
 } 
 .base #footer p {
     text-align: center;
-    margin: 0;                  /* нулевые поля первого элемента в нижнем колонтитуле позволят избежать возможного сжатия полей, то есть появления пространства между элементами div. */
-    padding: 10px 0;            /* добавление отступа к данному элементу создаст пробел (так, как он был бы создан с помощью поля), не вызывая при этом проблемы сжатия полей. */
+    margin: 0;
+    padding: 10px 0;
 }
 
-div #note {
+div #note, #students, #groups, #rout {
     padding: 10px 10px 10px;    
     margin-bottom: 10px;
     margin-top: 10px;
@@ -163,9 +163,6 @@ div #copyright {
     text-align: center;
 }
 
-
-/*--------------------------------------------------*/
-
 body{
     font-family:"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
     font-size:12px;
@@ -199,13 +196,21 @@ p, h1, form, button{
     font-weight:bold;
     margin-bottom:8px;
 }
-#stylized p{
+#stylized div[class=student]{
     font-size:11px;
     color:#666666;
     margin-bottom:20px;
     border-bottom:solid 1px #b7ddf2;
-    padding-bottom:10px;
+    padding-bottom:10px;}
+
+#stylized div[class=group]{
+    font-size:11px;
+    color:#666666;
+    margin-bottom:20px;
+    border-bottom:solid 1px #b7ddf2;
+    padding-bottom:10px;}
 }
+
 #stylized label{
     display:block;
     font-weight:bold;
@@ -222,12 +227,11 @@ p, h1, form, button{
     width:140px;
 }
 #stylized input{
-    float:left;
+    /*float:left;*/
     font-size:12px;
-    padding:4px 2px;
+    padding:2px 2px;
     border:solid 1px #aacfe4;
-    width:200px;
-    margin:2px 0 20px 10px;
+    margin:2px 0 10px 10px;
 }
 #stylized button{
     clear:both;
@@ -246,7 +250,6 @@ p, h1, form, button{
     color: #800000;
     background: #B7DDF2;
 }
-
 
 
 

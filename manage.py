@@ -6,6 +6,9 @@ import sys
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "main.settings")
 
+    ENVIRONMENT_VARIABLE = "DJANGO_SETTINGS_MODULE"
+    os.environ[ENVIRONMENT_VARIABLE] = "main.settings"
+
     from django.core.management import execute_from_command_line
 
     execute_from_command_line(sys.argv)

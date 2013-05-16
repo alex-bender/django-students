@@ -4,7 +4,6 @@ from django.dispatch import receiver
 
 from main.models import LogModel
 
-#------------------------------------------------------------------------------
 class Group(models.Model):
     name = models.CharField('Name', max_length=30)
     senior = models.ForeignKey('people.Student',
@@ -17,14 +16,12 @@ class Group(models.Model):
         return self.name
 
 
-
 @receiver(post_save, sender=Group)
 def group_post_save(sender, **kwargs):
     LogModel.objects.create(which='Group', what='Save')
     print('Group saved')
-#------------------------------------------------------------------------------
+
 @receiver(post_delete, sender=Group)
 def group_post_delete(sender, **kwargs):
     LogModel.objects.create(which='Group', what='Delete')
     print('Group deleted')
-#------------------------------------------------------------------------------
