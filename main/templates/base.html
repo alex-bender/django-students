@@ -4,13 +4,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
-    <script type="text/javascript" src="{{ MEDIA_URL }}backbone.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}handlebars.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}jquery_csrf.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}json2.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}underscore.js"></script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}router.js"></script>
+    <script data-main="{{ MEDIA_URL }}app" src="{{ MEDIA_URL }}lib/require.js"></script>
+{#    <script type="text/javascript" src="{{ MEDIA_URL }}backbone.js"></script>#}
+{#    <script type="text/javascript" src="{{ MEDIA_URL }}handlebars.js"></script>#}
+{#    <script type="text/javascript" src="{{ MEDIA_URL }}jquery-1.9.1.js"></script>#}
+{#    <script type="text/javascript" src="{{ MEDIA_URL }}jquery_csrf.js"></script>#}
+{#    <script type="text/javascript" src="{{ MEDIA_URL }}json2.js"></script>#}
+{#    <script type="text/javascript" src="{{ MEDIA_URL }}underscore.js"></script>#}
+{#    <script type="text/javascript" src="{{ MEDIA_URL }}router.js"></script>#}
 
     <title>{{ settings.SITE_NAME }}+afpf keys</title>
 </head>
